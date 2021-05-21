@@ -14,7 +14,7 @@ db_name = os.environ.get('DB_NAME')
 
 @app.route('/')
 def retriev_data():
-    company_name = 'ZUO'
+    company_name = request.args.get('company')
     conn = psycopg2.connect(f"host={db_host} dbname={db_name} user={db_user} password={db_pass}")
     cur = conn.cursor(cursor_factory=RealDictCursor)
     query = f"""
